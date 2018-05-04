@@ -14,7 +14,7 @@
         "johnpbloch/wordpress": "4.9.5",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "mcaskill/composer-exclude-files": "^1.0"
+        "mcaskill/composer-exclude-files": "*@dev"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
@@ -24,7 +24,7 @@
         "phpunit/phpunit": "~6.0"
     },
     "autoload": {
-        "exclude-from-files": [
+        "exclude-from-classmap": [
             "laravel/framework/src/Illuminate/Foundation/helpers.php"
         ],
         "classmap": [
@@ -71,6 +71,12 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
+    },
+    "repositories": {
+        "local":{
+            "type": "path",
+            "url": "custom/package/*"
+        }
     },
     "prefer-stable": true,
     "minimum-stability": "dev"
