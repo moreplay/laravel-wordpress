@@ -122,8 +122,10 @@ class ExcludeFilePlugin implements
                     $path = $package->getTargetDir() . '/' . $path;
                 }
 
-                $relativePath = $installPath . '/' . $path;
-
+                $relativePath = realpath($installPath . '/' . $path) ;
+                
+                //fix in windows
+	            
                 if (in_array($relativePath, $blacklist)) {
                     unset($autoload[$type][$key]);
                 }
@@ -170,9 +172,9 @@ class ExcludeFilePlugin implements
     private function parseExcludedFiles(array $paths, $vendorDir)
     {
         foreach ($paths as &$path) {
-            $path = $vendorDir . '/' . $path;
+            $path = realpath($vendorDir . '/' . $path) ;
         }
 
-        return $paths;
+        return array_filter($paths);
     }
 }
