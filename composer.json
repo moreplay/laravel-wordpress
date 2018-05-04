@@ -1,7 +1,7 @@
 {
     "name": "moreplay/laravel-wordpress",
     "description": "The Laravel Framework with Wordpress",
-    "keywords": [ "framework", "laravel" ,"wordpress"],
+    "keywords": [ "framework", "laravel", "wordpress" ],
     "license": "MIT",
     "type": "project",
     "require": {
