@@ -1,0 +1,77 @@
+{
+    "name": "moreplay/laravel-wordpress",
+    "description": "The Laravel Framework with Wordpress",
+    "keywords": [ "framework", "laravel" ,"wordpress"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=7.0.0",
+        "barryvdh/laravel-ide-helper": "^2.4",
+        "doctrine/dbal": "^2.7",
+        "fideloper/proxy": "~3.3",
+        "funkjedi/composer-include-files": "^1.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "johnpbloch/wordpress": "4.9.5",
+        "laravel/framework": "5.5.*",
+        "laravel/tinker": "~1.0",
+        "mcaskill/composer-exclude-files": "^1.0"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.1",
+        "filp/whoops": "~2.0",
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "exclude-from-files": [
+            "laravel/framework/src/Illuminate/Foundation/helpers.php"
+        ],
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "wordpress-install-dir": "public/home",
+        "include_files": [
+            "custom/include/helpers.php"
+        ],
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover",
+            "@php artisan ide-helper:generate docs/_ide_helper.php -q",
+            "@php artisan ide-helper:meta --filename=docs/.phpstorm.meta.php/.phpstorm.meta.php -q"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
