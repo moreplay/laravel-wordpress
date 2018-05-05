@@ -62,7 +62,7 @@ class Kernel extends Application {
 		$response = $kernel->handle($request);
 		$response->sendHeaders()->sendContent();
 		$kernel->terminate($request, $response);
-		if($this->exited || $response instanceof Response && $response->getContent() || trim($response) ) {
+		if($this->exited || $response instanceof Response && $response->getContent()  ) {
 			while(ob_get_level() > 0) {
 				ob_end_flush();
 			}
