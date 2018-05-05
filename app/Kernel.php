@@ -8,8 +8,8 @@
 
 namespace App;
 
-use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Foundation\Application;
+use Symfony\Component\HttpFoundation\Response;
 
 class Kernel extends Application {
 	
@@ -47,7 +47,7 @@ class Kernel extends Application {
 				$wp_query->is_404 = false;
 			}
 		});
-
+		
 		if(defined('WP_ADMIN')) {
 			add_action('admin_init', [ app(), 'run' ], 100);
 		} elseif(defined('WP_USE_THEMES') && WP_USE_THEMES) {
@@ -62,7 +62,7 @@ class Kernel extends Application {
 		$response = $kernel->handle($request);
 		$response->sendHeaders()->sendContent();
 		$kernel->terminate($request, $response);
-		if($this->exited || $response instanceof Responsable && $response->getContent()) {
+		if($this->exited || $response instanceof Response && $response->getContent() || trim($response) ) {
 			while(ob_get_level() > 0) {
 				ob_end_flush();
 			}
