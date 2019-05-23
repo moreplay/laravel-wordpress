@@ -9,7 +9,7 @@
         "barryvdh/laravel-ide-helper": "^2.4",
         "doctrine/dbal": "^2.7",
         "fideloper/proxy": "~3.3",
-        "funkjedi/composer-include-files": "^1.0",
+        "0.0.0/composer-include-files": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "johnpbloch/wordpress": "4.9.5",
         "laravel/framework": "5.5.*",
